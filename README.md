@@ -1,4 +1,4 @@
-# Spring Boot Clustered Data Warehouse Service
+# Spring Boot Demo Service
 
 This Spring Boot application provides an API for for Accept deal details and persist them in the DB via RESTful endpoints and persists them in the database.
 
