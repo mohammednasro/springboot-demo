@@ -1,5 +1,6 @@
 package com.mnasro.demo.controller.advice;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,11 +25,12 @@ public class DemoExceptionAdvice {
 
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public String bindExceptionHandler(Exception ex) {
+	public ResponseEntity<Map<String, List<String>>> bindExceptionHandler(Exception ex) {
 
 		LOG.error("Exception [{}] ", ex.getMessage());
-
-		return ex.getMessage();
+		Map<String, List<String>> map = new HashMap<>();
+		map.put("errors", Arrays.asList(ex.getMessage()));
+		return new ResponseEntity<Map<String, List<String>>>(map, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(BindException.class)
